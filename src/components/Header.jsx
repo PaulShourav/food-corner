@@ -1,8 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Header = () => {
+    const { user,logout } = useContext(AuthContext);
+    const handleLogout=()=>{
+        logout()
+        .then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
     return (
         <div className="navbar bg-base-100  container mx-auto ">
             <div className="navbar-start ">
@@ -34,9 +45,25 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-            <ul className="menu menu-horizontal px-1">
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/register'>Register</Link></li>
+                <ul className="menu menu-horizontal px-1">
+                    {
+                        user ? <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                {/* <div className="w-10 rounded-full">
+                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div> */}
+                                <div className='border-black border-2 rounded-full p-2'>
+                                <FontAwesomeIcon icon="fa-solid fa-user" beat/>
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                                
+                                <li><Link onClick={handleLogout}>Logout</Link></li>
+                            </ul>
+                        </div>:<><li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/register'>Register</Link></li></> 
+                    }
+
                 </ul>
             </div>
         </div>
