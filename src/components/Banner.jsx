@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Banner = () => {
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url("images/banner.jpg")` }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
+            <div className="hero-overlay bg-opacity-40"></div>
+            <div className="my-container hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     
                     <Marquee>

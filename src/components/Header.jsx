@@ -17,7 +17,7 @@ const Header = () => {
     
     return (
         <div className=' bg-base-300'>
-<div className="navbar  container mx-auto ">
+<div className="navbar  my-container mx-auto ">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,8 +52,8 @@ const Header = () => {
 
                                 <li><Link onClick={handleLogout}>Logout</Link></li>
                             </ul>
-                        </div> : <><Link to='/login'>Login</Link>
-                            <Link className='btn btn-sm btn-outline btn-primary ms-4' to='/register'>Register</Link> </>
+                        </div> : <div className='text-lg'><Link to='/login'>Login</Link>
+                            <Link className='btn btn-sm btn-outline btn-primary ms-4' to='/register'>Register</Link> </div>
                     }
 
                 </ul>
