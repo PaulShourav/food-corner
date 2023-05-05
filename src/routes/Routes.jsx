@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 // import { loadData } from "../utilities/utilities";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import ViewRecipe from "../pages/ViewRecipe";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+            },
+            {
+                path: "view-recipe",
+                element:<PrivateRoute><ViewRecipe/></PrivateRoute> ,
             },
             {
                 path: "login",

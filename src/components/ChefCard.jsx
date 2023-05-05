@@ -15,7 +15,7 @@ const ChefCard = ({chef}) => {
                 <p>Experience:{experience}</p>
                 <p>Likes:{likes}</p>
                 <div className="card-actions">
-                    <Link className="btn btn-primary">View Recipes</Link>
+                    <Link to='/view-recipe' className="btn btn-primary">View Recipes</Link>
                 </div>
             </div>
         </div>
