@@ -9,13 +9,23 @@ const Register = () => {
 
     const handleRegister = e => {
         e.preventDefault();
+        setError('');
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const confirm_password = form.confirm_password.value;
         if(password.length<=6){
-            setError('Pls enter at least 6 charecter.')
-            return
+            setError('Pls enter at least 6 charecter.');
+            return;
+        }
+        if (!(password==confirm_password)) {
+            setError("Password dosn't match.");
+            return;
+        }
+        if(!/(?=.*[!@#$%^&*])/.test(password)) {
+            setError("At least one special character");
+            return;
         }
         createUser(email, password)
             .then((userCredential) => {
@@ -53,6 +63,7 @@ const Register = () => {
                     <input type="text" name='name' placeholder="name" className="input input-bordered input-primary w-full max-w-xs" />
                     <input type="email" name='email' placeholder="Enter your email" className="input input-bordered input-primary w-full max-w-xs" />
                     <input type={showPassword?'password':'text'} name='password' placeholder="Password" className="input input-bordered input-primary w-full max-w-xs" />
+                    <input type={showPassword?'password':'text'} name='confirm_password' placeholder="Confirm Password" className="input input-bordered input-primary w-full max-w-xs" />
                     <p onClick={()=>setShowPassword(!showPassword)} className='ms-0'>
                     {
                         showPassword? <span>Show password</span>:<span>Hide password</span>
