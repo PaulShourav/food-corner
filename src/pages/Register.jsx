@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Register = () => {
     const [showPassword,setShowPassword]=useState(true);
@@ -75,7 +76,7 @@ const Register = () => {
                     <input type={showPassword?'password':'text'} name='confirm_password' placeholder="Confirm Password" className="input input-bordered input-primary w-full max-w-xs" />
                     <p onClick={()=>setShowPassword(!showPassword)} className='ms-0'>
                     {
-                        showPassword? <span>Show password</span>:<span>Hide password</span>
+                        showPassword? <span><FontAwesomeIcon icon="fa-regular fa-eye" /> Show password</span>:<span><FontAwesomeIcon icon="fa-regular fa-eye-slash" /> Hide password</span>
                     }
                     </p>
                    
@@ -83,8 +84,8 @@ const Register = () => {
                     <div className="card-actions">
                         <Link to='/login'>Already have a acocount?Pls login</Link>
                     </div>
-                    <button onClick={handleGoogleAuth} className="btn btn-primary">Google</button>
-                    <button onClick={handleGithubAuth} className="btn btn-primary">Github</button>
+                    <button onClick={handleGoogleAuth} className="btn btn-primary"> Google</button>
+                    <button onClick={handleGithubAuth} className="btn btn-primary"> Github</button>
                 </form>
 
 
