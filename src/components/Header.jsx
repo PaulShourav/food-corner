@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -16,33 +16,24 @@ const Header = () => {
     }
     
     return (
-        <div className="navbar bg-base-100  container mx-auto ">
+        <div className=' bg-base-300'>
+<div className="navbar  container mx-auto ">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li tabIndex={0}>
-                            <a className="justify-between">
-                                Parent
-                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-                            </a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                    <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/'>Home</NavLink></li>
+                    <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/blog'>Blog</NavLink></li>
                     </ul>
                 </div>
-                <Link className="font-bold text-xl ">Food Corner</Link>
+                <Link className="font-bold text-base md:text-3xl "><FontAwesomeIcon icon="fa-solid fa-utensils" className='pe-2 text-blue-600'/>Food Corner</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><Link>Home</Link></li>
-                    <li><Link>Blog</Link></li>
+                <ul className="menu menu-horizontal text-lg px-1">
+                    <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/'>Home</NavLink></li>
+                    <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/blog'>Blog</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
@@ -61,13 +52,15 @@ const Header = () => {
 
                                 <li><Link onClick={handleLogout}>Logout</Link></li>
                             </ul>
-                        </div> : <><li><Link to='/login'>Login</Link></li>
-                            <li><Link to='/register'>Register</Link></li></>
+                        </div> : <><Link to='/login'>Login</Link>
+                            <Link className='btn btn-sm btn-outline btn-primary ms-4' to='/register'>Register</Link> </>
                     }
 
                 </ul>
             </div>
         </div>
+        </div>
+        
     );
 };
 
