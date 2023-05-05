@@ -4,7 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const Register = () => {
     const [showPassword,setShowPassword]=useState(true);
-    const { user, createUser, googleLogin } = useContext(AuthContext);
+    const { user, createUser, googleLogin,githubLogin } = useContext(AuthContext);
     const [error,setError]=useState('');
 
     const handleRegister = e => {
@@ -44,7 +44,16 @@ const Register = () => {
             .then((result) => {
                 const user = result.user;
             })
-            .then((error) => {
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+    const handleGithubAuth = () => {
+        githubLogin()
+            .then((result) => {
+                const user = result.user;
+            })
+            .catch((error) => {
                 console.log(error)
             })
     }
@@ -75,6 +84,7 @@ const Register = () => {
                         <Link to='/login'>Already have a acocount?Pls login</Link>
                     </div>
                     <button onClick={handleGoogleAuth} className="btn btn-primary">Google</button>
+                    <button onClick={handleGithubAuth} className="btn btn-primary">Github</button>
                 </form>
 
 
