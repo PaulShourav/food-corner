@@ -23,17 +23,17 @@ const RecipeCard = ({ recipe }) => {
                     <label htmlFor="my-modal-5" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div className="hero min-h-screen ">
                         <div className="hero-content flex-col lg:flex-row-reverse">
-                            <img src={recipe_image} className="max-w-sm h-72 rounded-lg shadow-2xl" />
+                            <img src={recipe_image} className="object-cover  h-72 rounded-lg shadow-2xl" />
                             <div>
-                                <h1 className="text-5xl font-bold">{recipe_name}</h1>
+                                <h1 className="text-2xl lg:text-5xl font-bold">{recipe_name}</h1>
                                 <div className='py-6'>
-                                    <p className='text-2xl font-bold'>Infradiants</p>
+                                    <p className='text-xl lg:text-2xl font-bold'>Infradiants</p>
                                     <ul className='list-disc list-inside'>
                                         {
                                             recipe?.ingredients?.map(ingredient => <li>{ingredient}</li>)
                                         }
                                     </ul>
-                                    <p className='text-2xl font-bold mt-5'>Cooking Method</p>
+                                    <p className='text-xl lg:text-2xl font-bold mt-5'>Cooking Method</p>
                                     <p className=''>
                                         <br />
                                         {
