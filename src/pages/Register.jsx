@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { updateProfile } from 'firebase/auth';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
     const [showPassword,setShowPassword]=useState(true);
     const { user, createUser} = useContext(AuthContext);
     const [error,setError]=useState('');
-    const [successMessage,setSuccessMessage]=useState('');
+  
 console.log(user);
     const handleRegister = e => {
         e.preventDefault();
@@ -36,10 +37,9 @@ console.log(user);
                 // Signed in 
                 const result = userCredential.user;
                 form.reset();
-                
                 updateUserData(result,name,user_image)
-                //console.log(result);
-               
+                //console.log(result); 
+                toast.success('Succesfully Registered')    
             })
             .catch((error) => {
                 console.log(error);
@@ -52,7 +52,7 @@ console.log(user);
         })
         .then(() => {
             console.log("Name updated");
-            setSuccessMessage("Successfully Registered")
+            
           }).catch((error) => {
             console.log(error);
           });
@@ -63,14 +63,8 @@ console.log(user);
                
                 <p className='text-2xl font-bold text-center'>Register</p>
                 {
-                    error && <p className='text-red-700 text-center'>{error}</p>
-                    
-                }
-                {
-                    successMessage && <div className="badge badge-accent badge-outline">{successMessage}</div>
-                }
-             
-                
+                    error && <p className='text-red-700 text-center'>{error}</p>             
+                }   
                 <form onSubmit={handleRegister} className="card-body  text-center pt-5" >
                 <input type="file" name='user_image' className="file-input file-input-bordered file-input-primary w-full max-w-xs" required/>
                     <input type="text" name='name' placeholder="name" className="input input-bordered input-primary w-full max-w-xs" required/>
