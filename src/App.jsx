@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 import { AuthContext } from './providers/AuthProvider';
 import { Vortex } from 'react-loader-spinner';
 import Footer from './components/Footer';
+import { Toaster } from 'react-hot-toast';
 const App = () => {
   const { loading } = useContext(AuthContext);
   if (loading) {
@@ -28,6 +29,10 @@ const App = () => {
       <Header></Header>
       <Outlet></Outlet>
       <Footer></Footer>
+      <Toaster
+       position="top-right"
+       reverseOrder={true}
+       />
     </div>
   );
 };

@@ -1,19 +1,27 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const RecipeCard = ({ recipe }) => {
-    console.log(recipe);
-    const { recipe_name, recipe_image, cooking_method, rating } = recipe
+    const [favourite,setFavourite]=useState(true)
+    const {recipe_id, recipe_name, recipe_image, cooking_method, rating } = recipe;
+    const handleFavourite=(recipe_id)=>{
+        toast.success('Added your Favourite Item.')
+        setFavourite(false)
+        console.log(recipe_id);
+    }
     return (
         <>
             <div className="card bg-base-100 shadow-xl ">
                 <figure><img src={recipe_image} className='object-cover h-64' alt="Shoes" /></figure>
                 <div className="card-body relative">
-                    <h2 className="card-title mb-10 ">
-                        {recipe_name}
-                        <div className="badge badge-secondary">NEW</div>
-                    </h2>
+                    <div className="flex items-center mb-10 ">
+                        <p className='card-title font-bold grow'>{recipe_name}</p>
+                        <button onClick={()=>handleFavourite(recipe_id)} className={`btn btn-sm btn-outline ${favourite?' btn-warning':'btn-disabled'}`} ><FontAwesomeIcon icon="fa-regular fa-bookmark" /></button>
+                    </div>
+                    
                         <div className="card-actions  absolute bottom-3 ">
-                            <label htmlFor="my-modal-5" className='btn btn-sm btn-outline btn-primary'>Details</label>
+                            <label htmlFor="my-modal-5" className='btn btn-sm btn-outline btn-secondary'>Details <FontAwesomeIcon icon="fa-solid fa-arrow-right" /></label>
                         </div>
                 </div>
             </div>
@@ -30,7 +38,7 @@ const RecipeCard = ({ recipe }) => {
                                     <p className='text-xl lg:text-2xl font-bold'>Infradiants</p>
                                     <ul className='list-disc list-inside'>
                                         {
-                                            recipe?.ingredients?.map(ingredient => <li>{ingredient}</li>)
+                                            recipe?.ingredients?.map((ingredient,index) => <li key={index++}>{ingredient}</li>)
                                         }
                                     </ul>
                                     <p className='text-xl lg:text-2xl font-bold mt-5'>Cooking Method</p>

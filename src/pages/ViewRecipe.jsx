@@ -57,7 +57,7 @@ const ViewRecipe = () => {
                 <p className='mb-12 font-bold text-4xl text-center'>Recipes</p>
                 <div className='my-container grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                     { 
-                    recipes?.recipes?.map((recipe,index)=><RecipeCard key={index+1} recipe={recipe}></RecipeCard>)
+                    recipes?.recipes?.map(recipe=><RecipeCard key={recipe.recipe_id} recipe={recipe}></RecipeCard>)
                     }
                 </div>
             </section>
