@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 // import Carousel from '../components/Carousel';
 import Banner from '../components/Banner';
 import ChefCard from '../components/ChefCard';
-// import { DataloaderContext } from '../providers/DataLoadProvider';
 
 const Home = () => {
     const [chefData, setChefData] = useState([])
+   
     useEffect(() => {
         fetch('https://server-food-corner-paulshourav.vercel.app/chefData')
             .then(res => res.json())

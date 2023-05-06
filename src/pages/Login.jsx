@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
-    const { user, logIn } = useContext(AuthContext);
+    const { user, logIn, googleLogin,githubLogin  } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,6 +28,26 @@ const Login = () => {
                 console.log(errorMessage);
             });
     };
+    const handleGoogleAuth = () => {
+        googleLogin()
+            .then((result) => {
+                const user = result.user;
+                navigate(from, { replace: true })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+    const handleGithubAuth = () => {
+        githubLogin()
+            .then((result) => {
+                const user = result.user;
+                navigate(from, { replace: true })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
     return (
         <div className='flex justify-center my-20'>
             <div className="card w-96 bg-base-100 shadow-xl ">
@@ -37,11 +57,13 @@ const Login = () => {
                 }
                 <form onSubmit={handleLogin} className="card-body  text-center pt-5">
                     <input type="email" name='email' placeholder="Enter your email" className="input input-bordered input-primary w-full max-w-xs" />
-                    <input type="password" name='password' placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs" />
+                    <input type="password" name='password' placeholder="Password" className="input input-bordered input-primary w-full max-w-xs" />
                     <button className="btn btn-primary">Login</button>
                     <div className="card-actions">
                         <Link to='/register'>Create new account?</Link>
                     </div>
+                    <button onClick={handleGoogleAuth} className="btn btn-primary"> Google</button>
+                    <button onClick={handleGithubAuth} className="btn btn-primary"> Github</button>
                 </form>
             </div>
         </div>

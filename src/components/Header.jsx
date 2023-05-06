@@ -52,8 +52,8 @@ const Header = () => {
 
                                 <li><Link onClick={handleLogout}>Logout</Link></li>
                             </ul>
-                        </div> : <div className='text-lg'><Link to='/login'>Login</Link>
-                            <Link className='btn btn-sm btn-outline btn-primary ms-4' to='/register'>Register</Link> </div>
+                        </div> : <div className='text-lg'><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''}  to='/login'>Login</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? 'btn btn-sm  btn-primary ms-4' : 'btn btn-sm btn-outline btn-primary ms-4'} to='/register'>Register <FontAwesomeIcon icon="fa-solid fa-user" className='ms-2'/></NavLink> </div>
                     }
 
                 </ul>
