@@ -56,8 +56,8 @@ const Login = () => {
                     error && <p className='text-red-700 text-center'>{error}</p>
                 }
                 <form onSubmit={handleLogin} className="card-body  text-center pt-5">
-                    <input type="email" name='email' placeholder="Enter your email" className="input input-bordered input-primary w-full max-w-xs" />
-                    <input type="password" name='password' placeholder="Password" className="input input-bordered input-primary w-full max-w-xs" />
+                    <input type="email" name='email' placeholder="Enter your email" className="input input-bordered input-primary w-full max-w-xs" required/>
+                    <input type="password" name='password' placeholder="Password" className="input input-bordered input-primary w-full max-w-xs" required/>
                     <button className="btn btn-primary">Login</button>
                     <div className="card-actions">
                         <Link to='/register'>Create new account?</Link>

@@ -4,3 +4,6 @@
 .my-container{
     @apply container md:container lg:container xl:container mx-auto
 }
+.active-link{
+    @apply border-b-2 border-blue-900 rounded-md pb-1
+}

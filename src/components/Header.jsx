@@ -25,16 +25,16 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/'>Home</NavLink></li>
-                            <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/blog'>Blog</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? 'active-link' : ''} to='/'>Home</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? 'active-link' : ''} to='/blog'>Blog</NavLink></li>
                         </ul>
                     </div>
                     <Link className="font-bold text-base md:text-3xl "><FontAwesomeIcon icon="fa-solid fa-utensils" className='pe-2 text-blue-600' />Food Corner</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal text-lg px-1">
-                        <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/'>Home</NavLink></li>
-                        <li><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/blog'>Blog</NavLink></li>
+                <div className="navbar-center hidden lg:flex ">
+                    <ul className="flex gap-5 text-lg px-1">
+                        <li><NavLink className={({ isActive }) => isActive ? 'active-link' : ''} to='/'>Home</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? 'active-link' : ''} to='/blog'>Blog</NavLink></li>
                     </ul>
                     
                 </div>
@@ -49,8 +49,10 @@ const Header = () => {
 
                                     <li><Link onClick={handleLogout}><FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" className='me-2' />Logout</Link></li>
                                 </ul>
-                            </div> : <div className='text-lg'><NavLink className={({ isActive }) => isActive ? 'text-blue-900' : ''} to='/login'>Login</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? 'btn btn-sm  btn-primary ms-4' : 'btn btn-sm btn-outline btn-primary ms-4'} to='/register'>Register <FontAwesomeIcon icon="fa-solid fa-user" className='ms-2' /></NavLink> </div>
+                            </div> : <div className='flex text-lg'> 
+                                <NavLink className={({ isActive }) => isActive ? 'active-link' : ''} to='/login'>Login</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'btn btn-sm  btn-primary ms-4' : 'btn btn-sm btn-outline btn-primary ms-4'} to='/register'>Register <FontAwesomeIcon icon="fa-solid fa-user" className='ms-2' /></NavLink> 
+                                </div>
                         }
 
                     </ul>

@@ -9,8 +9,7 @@ const ViewRecipe = () => {
     const id = useParams();
     const [chefData, setChefData] = useState([])
     const [recipes, setRecipes] = useState([])
-    // console.log(chefData);
-    // console.log(recipes.recipes);
+
     useEffect(() => {
         fetch('https://server-food-corner-paulshourav.vercel.app/chefData')
             .then(res => res.json())
@@ -31,9 +30,6 @@ const ViewRecipe = () => {
             )
 
     }, [])
-
-
-
 
     return (
         <div>

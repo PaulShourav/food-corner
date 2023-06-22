@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
 
                 <div className='border-t '>
-                <p className='text-gray-500 mt-5'>@2023 CareerHub. All Rights Reserved</p>
+                <p className='text-gray-500 mt-5'>@2023 FoodCorner. All Rights Reserved</p>
                 </div>
 
             </div>
